@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+
 void main (){
   runApp(MyApp());
 }
@@ -11,257 +12,321 @@ class MyApp extends StatelessWidget{
   Widget build(BuildContext context){
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primarySwatch: Colors.amber,
+        visualDensity: VisualDensity.adaptivePlatformDensity
+      ),
+
       home: Scaffold(
+        bottomNavigationBar: Padding(
+          padding: EdgeInsets.only(bottom: 20),
+          child: BottomNavigationBar(
+            type: BottomNavigationBarType.fixed,
+            selectedItemColor: Colors.amber,
+            unselectedItemColor: Colors.grey,
+            showSelectedLabels: false,
+            showUnselectedLabels: false,
+            elevation: 0,
+            items: [
+            BottomNavigationBarItem(icon: Icon(Icons.home_outlined), label: "Home"),
+            BottomNavigationBarItem(icon: Icon(Icons.shopping_cart_outlined), label: "My cart"),
+            BottomNavigationBarItem(icon: Icon(Icons.save_outlined), label: "Save"),
+            BottomNavigationBarItem(icon: Icon(Icons.favorite_outline), label: "Favorites"),
+          ],
+          ),
+        ),
+
         body: Padding(
-          padding: EdgeInsets.only(top: 20 , left: 15 , right: 15),
+          padding: EdgeInsets.only(top: 40 , left: 20 , right:  40),
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    IconButton(onPressed: (){}, icon: Icon(Icons.sort_outlined)),
+                    Container(
+                      height: 40,
+                      width: 40,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50),
+                        color: Colors.amber
+                      ),
+                      child: IconButton(onPressed: (){}, icon: Icon(Icons.person), color: Colors.black,),
+                    ),
+                  ],
+                ),
+
+                SizedBox(height: 30),
+
+                Text(
+                  "Welcome , Jalal",
+                  style: TextStyle(fontWeight: FontWeight.w400, fontSize: 20, color: Colors.black),
+                ),
+
+                SizedBox(height: 10),
+
+                Text(
+                  "Choice you Best food",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.black),
+                ),
+
+                SizedBox(height: 20),
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
-                      padding: EdgeInsets.all(8),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
+                      width: 290,
+                      height: 50,
+                      child: TextField(
+                        decoration: InputDecoration(
+                          hintText: "Search food",
+                          border: InputBorder.none,
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(5)
+                          )
+                        ),
                       ),
-                      child: Icon(Icons.keyboard_arrow_left , size: 28 , color: Colors.black),
                     ),
 
                     Container(
-                      padding: EdgeInsets.all(8),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Icon(Icons.notifications_none, size: 25,color: Colors.black),
+                      height: 50,
+                      width: 50,
+                      decoration: BoxDecoration(color: Colors.amber, borderRadius: BorderRadius.circular(10)),
+                      child: IconButton(onPressed: (){}, icon: Icon(Icons.search_outlined), color: Colors.black,),
                     ),
                   ],
                 ),
 
                 SizedBox(height: 10),
 
-                Center(
-                  child: Container(
-                    height: 300,
-                    width: 300,
-                    child: Image.asset('images/pink.jpg', height: 230, width: 230),
-                  ),
-                ),
-
-                SizedBox(height: 20),
-
-                Container (
-                  padding: EdgeInsets.only(top: 20 , left: 10),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Container(
-                        padding: EdgeInsets.all(8),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Pink Donut",
-                              style: TextStyle(fontWeight: FontWeight.bold , fontSize: 20 , color: Colors.black),
-                            ),
-
-                             SizedBox(height: 5),
-
-                            Text(
-                              "Spicy Pink Donut family",
-                              style: TextStyle(fontWeight: FontWeight.w400 , fontSize: 15, color: Colors.grey),
-                            )
-                          ],
-                        ),
-                      ),
-
-                      Container(
-                          padding: EdgeInsets.all(8),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: [
-                              Text(
-                              "\$10.00",
-                              style: TextStyle(fontWeight: FontWeight.bold , fontSize: 20 , color: Colors.black),
-                            ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 10 , bottom: 10),
+                  child: DefaultTabController(
+                    length: 3, 
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: <Widget>[
+                        Container(
+                          width: 200,
+                          child: TabBar(
+                            isScrollable: true,
+                            labelColor: Colors.amber,
+                            unselectedLabelColor: Colors.grey,
+                            tabs: [
+                              Tab(text: "Donut"),
+                              Tab(text: "Pink Donut"),
+                              Tab(text: "Floating"),
                             ],
                           ),
-                      ),
-                    ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
 
                 SizedBox(height: 10),
 
-                Container(
-                  padding: EdgeInsets.only(top: 20 , left: 10),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                  child: Column(
                     children: [
-                      Container(
-                        padding: EdgeInsets.all(8),
-
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Column(
-                                  children: [
-                                    Icon(Icons.schedule_outlined, size: 20 , color: Colors.amber),
-                                  ],
+                      Padding(
+                        padding: EdgeInsets.symmetric(vertical: 10),
+                        child: Container(
+                          width: 380,
+                          height: 150,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(5)
+                          ),
+                          child: Row(
+                            children: [
+                              InkWell(
+                                onTap: (){},
+                                child: Container(
+                                  alignment: Alignment.center,
+                                  child: Image.asset('images/donut1.jpg', height: 150, width: 150),
                                 ),
-                                
-                                SizedBox(width: 10),
+                              ),
 
-                                Column(
-                                  children: [
-                                    Text(
-                                      "Delivery in", 
-                                      style: TextStyle(fontWeight: FontWeight.w400 , fontSize: 18 , color: Colors.grey),
-                                    )
-                                  ],
-                                ),
-                                  
-                              ],
-                            ),
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text("Tasty Donut", style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
 
-                            Container(
-                              padding: EdgeInsets.only(left: 26),
-                              child:
-                                Text(
-                                  "30 min", style: TextStyle(fontWeight: FontWeight.bold , fontSize: 20, color: Colors.black),
-                                ),
-                            ),
-                          ],
-                        ),
-                      ),
+                                  SizedBox(height:5),
 
-                      SizedBox(width: 20),
+                                  Text("Spicy Tasty Donut family", style: TextStyle(fontSize: 12, fontWeight: FontWeight.normal)),
 
-                      Container(
-                        padding: EdgeInsets.only(right: 50),
-                        
-                        child: Row(
-                          children: [
-                            Column(
-                              children: [
-                                Container(
-                                  height: 25,
-                                  width: 25,
-                                  decoration: BoxDecoration(
-                                    color: Colors.amber
+                                  SizedBox(height: 5),
+
+                                  Row(
+                                    children: [
+                                    Text("\$10.00", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16 )),
+                                    ],
                                   ),
-                                  child: Icon(Icons.add , color: Colors.white, size: 25),
-                                ),
-                              ],
-                            ),
+                                ],
+                              ),
 
-                            SizedBox(width: 10),
-
-                            Column(
-                              children: [
-                                Text(
-                                  "2" , style: TextStyle(fontSize: 25 , fontWeight: FontWeight.bold , color: Colors.black),
-                                )
-                              ],
-                            ),
-
-                            SizedBox(width: 10),
-
-                            Column(
-                              children: [
-                                Container(
-                                  height: 25,
-                                  width: 25,
-                                  decoration: BoxDecoration(
-                                    color: Colors.amber
-                                  ),
-                                  child: Icon(Icons.remove , color: Colors.white, size: 25),
-                                ),
-                              ],
-                            ),
-
-                          ],
-                        ),
-                      )
-
-                    ],
-                  ),
-                ),
-
-                SizedBox(height: 20),
-
-                Container(
-                  padding: EdgeInsets.only(top: 20, left: 10),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Restaurant info", 
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold, 
-                          fontSize: 25,
-                          color: Colors.black
+                              Column(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                    TextButton(onPressed: (){}, 
+                                    child: Container(
+                                      padding: EdgeInsets.only(top: 20, left: 10 , right: 10 , bottom: 10),
+                                      decoration: BoxDecoration(color: Colors.amber, borderRadius: BorderRadius.only(topLeft: Radius.circular(50))),
+                                      child: Icon(Icons.add,color: Colors.white),
+                                    ) 
+                                  )
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ],
                   ),
                 ),
 
-                SizedBox(height: 15),
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.symmetric(vertical: 10),
+                        child: Container(
+                          width: 380,
+                          height: 150,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(5)
+                          ),
+                          child: Row(
+                            children: [
+                              InkWell(
+                                onTap: (){},
+                                child: Container(
+                                  alignment: Alignment.center,
+                                  child: Image.asset('images/donut2.jpg', height: 150, width: 150),
+                                ),
+                              ),
 
-               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 15),
-                child: Center(
-                  child: Text(
-                    "A restaurant (sometimes known as a diner) is a place where cooked food is sold the public, and where people sit down to eat.",
-                    style: TextStyle(
-                      fontWeight: FontWeight.w600,
-                      fontSize: 15,
-                      color: Colors.grey
-                    ),
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text("Pink Donut", style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+
+                                  SizedBox(height:5),
+
+                                  Text("Spicy Tasty Donut family", style: TextStyle(fontSize: 12, fontWeight: FontWeight.normal)),
+
+                                  SizedBox(height: 5),
+
+                                  Row(
+                                    children: [
+                                    Text("\$20.00", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16 )),
+                                    ],
+                                  ),
+                                ],
+                              ),
+
+                              Column(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                    TextButton(onPressed: (){}, 
+                                    child: Container(
+                                      padding: EdgeInsets.only(top: 20, left: 10 , right: 10 , bottom: 10),
+                                      decoration: BoxDecoration(color: Colors.amber, borderRadius: BorderRadius.only(topLeft: Radius.circular(50))),
+                                      child: Icon(Icons.add,color: Colors.white),
+                                    ) 
+                                  )
+                                ],
+                              ),
+                            ],
+                          ),  
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-               ),
 
-               SizedBox(height: 25),
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.symmetric(vertical: 10),
+                        child: Container(
+                          width: 380,
+                          height: 150,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(5)
+                          ),
+                          child: Row(
+                            children: [
+                              InkWell(
+                                onTap: (){},
+                                child: Container(
+                                  alignment: Alignment.center,
+                                  child: Image.asset('images/donut3.jpg', height: 150, width: 150),
+                                ),
+                              ),
 
-              Center(
-                child: Container(
-                  height: 50,
-                  width: 300,
-                  decoration: BoxDecoration(
-                    color: Colors.amber,
-                    borderRadius: BorderRadius.circular(5),
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text("Floating Donut", style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+
+                                  SizedBox(height:5),
+
+                                  Text("Spicy Tasty Donut family", style: TextStyle(fontSize: 12, fontWeight: FontWeight.normal)),
+
+                                  SizedBox(height: 5),
+
+                                  Row(
+                                    children: [
+                                    Text("\$20.00", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16 )),
+                                    ],
+                                  ),
+                                ],
+                              ),
+
+                              Column(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                    TextButton(onPressed: (){}, 
+                                    child: Container(
+                                      padding: EdgeInsets.only(top: 20, left: 10 , right: 10 , bottom: 10),
+                                      decoration: BoxDecoration(color: Colors.amber, borderRadius: BorderRadius.only(topLeft: Radius.circular(50))),
+                                      child: Icon(Icons.add,color: Colors.white),
+                                    ) 
+                                  )
+                                ],
+                              ),
+                            ],
+                          ),  
+                        ),
+                      ),
+                    ],
                   ),
-                  child: Container(
-                    child: TextButton(
-                      onPressed: (){},
-                      child: const Text("Add to cart", style: TextStyle(fontWeight: FontWeight.bold , fontSize: 20 , color: Colors.white)),
-                    ),
-                  ),
-
                 ),
-              )
-
-
+                
               ],
-
-
             ),
           ),
         ),
       ),
+      
+
+      
     );
   }
+
 }
